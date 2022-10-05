@@ -58,4 +58,13 @@ public class MakerService {
     }
 
 
+    public boolean delete(Long id) {
+        try {
+            makerRepository.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
+    }
 }
