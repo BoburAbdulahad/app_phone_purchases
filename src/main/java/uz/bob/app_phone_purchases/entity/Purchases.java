@@ -5,12 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import uz.bob.app_phone_purchases.entity.template.AbstractEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @EqualsAndHashCode(callSuper = true)
@@ -18,6 +16,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Purchases extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.LAZY,optional = false)
@@ -30,5 +29,8 @@ public class Purchases extends AbstractEntity {
     @CreationTimestamp
     private Timestamp dateAndTime;
 
-
+    public Purchases(Phone phone, User user) {
+        this.phone = phone;
+        this.user = user;
+    }
 }

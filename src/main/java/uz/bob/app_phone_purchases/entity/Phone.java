@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import uz.bob.app_phone_purchases.entity.template.AbstractEntity;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EntityListeners(value = AuditingEntityListener.class)
 public class Phone extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.EAGER,optional = false)

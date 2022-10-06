@@ -6,12 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import uz.bob.app_phone_purchases.entity.Maker;
 import uz.bob.app_phone_purchases.entity.Phone;
 import uz.bob.app_phone_purchases.payload.ApiResponse;
-import uz.bob.app_phone_purchases.payload.MakerDto;
 import uz.bob.app_phone_purchases.payload.PhoneDto;
-import uz.bob.app_phone_purchases.service.MakerService;
 import uz.bob.app_phone_purchases.service.PhoneService;
 
 import javax.validation.Valid;
@@ -55,7 +52,6 @@ public class PhoneController {
     public HttpEntity<?> delete(@PathVariable Long id){
         boolean delete = phoneService.delete(id);
         return delete?ResponseEntity.noContent().build():ResponseEntity.notFound().build();
-
     }
 
 

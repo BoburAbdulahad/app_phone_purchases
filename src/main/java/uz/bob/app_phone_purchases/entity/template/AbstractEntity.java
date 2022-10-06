@@ -5,7 +5,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
-import uz.bob.app_phone_purchases.entity.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -28,11 +27,9 @@ public abstract class AbstractEntity {
 
     @JoinColumn(updatable = false)
     @CreatedBy
-//    @ManyToOne(fetch = FetchType.LAZY)
     private Long createdBy;
 
     @LastModifiedBy
-//    @ManyToOne(fetch = FetchType.LAZY)
     private Long updatedBy;
 
 
