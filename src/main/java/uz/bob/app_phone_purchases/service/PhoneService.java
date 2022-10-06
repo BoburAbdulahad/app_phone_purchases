@@ -96,4 +96,14 @@ public class PhoneService {
         List<Phone> byMaker = phoneRepository.getByMaker(maker);
         return byMaker;
     }
+
+    public List<Phone> searchByPrice(double price) {
+        List<Phone> allByPrice = phoneRepository.findAllByPrice(price);
+        return allByPrice;
+    }
+
+    public List<Phone> searchByColor(String color) {
+        List<Phone> allByColor = phoneRepository.findAllByColor(color);
+        return allByColor;
+    }
 }

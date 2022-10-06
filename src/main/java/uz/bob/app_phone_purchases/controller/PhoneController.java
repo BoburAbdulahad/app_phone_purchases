@@ -57,11 +57,25 @@ public class PhoneController {
 
     //==========================SEARCH==============================//
 
-    @GetMapping("/search/{maker}")
+    @GetMapping("/searchMaker/{maker}")
     public HttpEntity<?> searchByMaker(@PathVariable String maker){
         List<Phone> searchByMaker = phoneService.searchByMaker(maker);
         return new HttpEntity<>(searchByMaker);
     }
+
+
+    @GetMapping("searchPrice/{price}")
+    public HttpEntity<?> searchByPrice(@PathVariable double price){
+        List<Phone> searchByPrice = phoneService.searchByPrice(price);
+        return new HttpEntity<>(searchByPrice);
+    }
+
+    @GetMapping("searchColor/{color}")
+    public HttpEntity<?> searchByColor(@PathVariable String color){
+        List<Phone> searchByColor = phoneService.searchByColor(color);
+        return new HttpEntity<>(searchByColor);
+    }
+
 
 
 

@@ -33,7 +33,7 @@ public class PurchasesService {
                 user
         );
         purchasesRepository.save(purchases);
-        return new ApiResponse("Phone is sales",true);
+        return new ApiResponse("Phone purchased",true);
     }
 
 
