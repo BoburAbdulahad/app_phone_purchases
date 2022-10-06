@@ -91,4 +91,9 @@ public class PhoneService {
             return false;
         }
     }
+
+    public List<Phone> searchByMaker(String maker) {
+        List<Phone> byMaker = phoneRepository.getByMaker(maker);
+        return byMaker;
+    }
 }

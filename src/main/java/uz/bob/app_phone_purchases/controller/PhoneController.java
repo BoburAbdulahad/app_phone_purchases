@@ -55,5 +55,15 @@ public class PhoneController {
     }
 
 
+    //==========================SEARCH==============================//
+
+    @GetMapping("/search/{maker}")
+    public HttpEntity<?> searchByMaker(@PathVariable String maker){
+        List<Phone> searchByMaker = phoneService.searchByMaker(maker);
+        return new HttpEntity<>(searchByMaker);
+    }
+
+
+
 
 }
