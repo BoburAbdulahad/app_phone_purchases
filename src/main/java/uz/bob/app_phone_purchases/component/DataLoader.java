@@ -31,11 +31,11 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (initialMode.equals("ALWAYS")){
+        if (initialMode.equals("ALWAYS")) {
             Permission[] permissions = Permission.values();
             Role admin = roleRepository.save(new Role(
                     AppConstants.ADMIN,
-                    Arrays.asList(permissions),"This is admin role"
+                    Arrays.asList(permissions), "This is admin role"
             ));
 
             Role operator = roleRepository.save(new Role(
@@ -43,11 +43,11 @@ public class DataLoader implements CommandLineRunner {
                     Arrays.asList(ADD_PHONE, EDIT_PHONE, DELETE_PHONE,
                             ADD_MAKER, EDIT_MAKER, DELETE_MAKER,
                             ADD_PHOTO, EDIT_PHOTO, DELETE_PHOTO,
-                            VIEW_PHONE),"This is operator role"
+                            VIEW_PHONE), "This is operator role"
             ));
 
             Role user = roleRepository.save(new Role(
-                    AppConstants.USER, Arrays.asList(VIEW_PHONE),"This is user role"
+                    AppConstants.USER, Arrays.asList(VIEW_PHONE), "This is user role"
             ));
 
 
@@ -72,12 +72,12 @@ public class DataLoader implements CommandLineRunner {
             );
 
             userRepository.save(new User(
-                    "User",
-                    "user",
-                    passwordEncoder.encode("user123"),
-                    user,
-                    true
-                   )
+                            "User",
+                            "user",
+                            passwordEncoder.encode("user123"),
+                            user,
+                            true
+                    )
             );
 
         }

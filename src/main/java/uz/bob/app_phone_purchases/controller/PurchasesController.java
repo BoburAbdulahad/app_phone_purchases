@@ -27,6 +27,7 @@ public class PurchasesController {
         return ResponseEntity.status(apiResponse.isSuccess()?200:409).body(apiResponse);
     }
 
+
     @PreAuthorize(value = "hasAuthority('VIEW_PURCHASES')")
     @GetMapping
     public HttpEntity<?> view(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "10") int size){

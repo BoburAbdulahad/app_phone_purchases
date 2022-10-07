@@ -12,6 +12,7 @@ import uz.bob.app_phone_purchases.payload.ApiResponse;
 import uz.bob.app_phone_purchases.repository.PhoneRepository;
 import uz.bob.app_phone_purchases.repository.PurchasesRepository;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,9 +29,11 @@ public class PurchasesService {
         if (!optionalPhone.isPresent()) {
             return new ApiResponse("This type phone not found",false);
         }
+        Timestamp timestamp=new Timestamp(System.currentTimeMillis());
         Purchases purchases=new Purchases(
                 optionalPhone.get(),
-                user
+                user,
+                timestamp
         );
         purchasesRepository.save(purchases);
         return new ApiResponse("Phone purchased",true);

@@ -27,14 +27,17 @@ public class PhoneController {
         ApiResponse apiResponse=phoneService.addPhone(phoneDto);
         return ResponseEntity.status(apiResponse.isSuccess()?200:409).body(apiResponse);
     }
+
+    @PreAuthorize(value = "hasAuthority('VIEW_PHONE')")
     @GetMapping
-    public HttpEntity<?> viewMakers(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "10") int size){
+    public HttpEntity<?> view(@RequestParam(defaultValue = "0") int page,@RequestParam(defaultValue = "10") int size){
         List<Phone> makers = phoneService.view(page, size);
         return new HttpEntity<>(makers);
     }
 
+    @PreAuthorize(value = "hasAuthority('VIEW_PHONE')")
     @GetMapping("/{id}")
-    public HttpEntity<Phone> getMaker(@PathVariable Long id){
+    public HttpEntity<Phone> getPhone(@PathVariable Long id){
         Phone phone = phoneService.getPhone(id);
         return ResponseEntity.status(phone!=null? HttpStatus.OK:HttpStatus.NOT_FOUND).body(phone);
     }
